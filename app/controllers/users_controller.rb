@@ -31,7 +31,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     
-    if @user.save == true
+    if @user.save == true  
+      sign_in(@user)
       flash[:success] = "Мы вас поздравляем. Регистрация прошла успешно!"
       redirect_to @user
     
